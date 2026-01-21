@@ -7,4 +7,6 @@ import uce.edu.web.api.matricula.domain.Estudiante;
 @ApplicationScoped
 public class EstudianteRepository implements PanacheRepository<Estudiante> {
 
+    
+
 }

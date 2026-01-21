@@ -25,6 +25,10 @@ public class Estudiante extends PanacheEntityBase {
 
     public LocalDateTime fechaNacimiento;
 
+    public String provincia;
+
+    public String genero;
+
     // Getters and Setters
 
     public Integer getId() {
