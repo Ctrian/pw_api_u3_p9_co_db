@@ -52,7 +52,7 @@ public class EstudianteService {
     }
 
     @Transactional
-        public void eliminar (Integer id){
+    public void eliminar(Integer id) {
         this.estudianteRepository.deleteById(id.longValue());
     }
 

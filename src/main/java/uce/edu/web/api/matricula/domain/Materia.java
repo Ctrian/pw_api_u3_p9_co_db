@@ -9,7 +9,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tabla")
+@Table(name = "materia")
 @SequenceGenerator(name = "materia_seq", sequenceName = "materia_sequence", allocationSize = 1)
 public class Materia extends PanacheEntityBase {
 
@@ -18,6 +18,12 @@ public class Materia extends PanacheEntityBase {
     public Integer id;
 
     private String nombre;
+
+    private String codigo;
+
+    private String descripcion;
+
+    private String tipo;
 
     // Getters y Setters
 
@@ -35,6 +41,30 @@ public class Materia extends PanacheEntityBase {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
 }

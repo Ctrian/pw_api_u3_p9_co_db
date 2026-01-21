@@ -5,7 +5,6 @@ import java.util.List;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
@@ -35,7 +34,6 @@ public class EstudianteResource {
 
     @POST
     @Path("/crear")
-    // @Consumes("application/json")
     public void guardar(Estudiante estudiante) {
         this.estudianteService.crear(estudiante);
     }
@@ -54,7 +52,6 @@ public class EstudianteResource {
 
     @DELETE
     @Path("/borrar/{id}")
-
     public void borrar(@PathParam("id") Integer id) {
         this.estudianteService.eliminar(id);
     }
