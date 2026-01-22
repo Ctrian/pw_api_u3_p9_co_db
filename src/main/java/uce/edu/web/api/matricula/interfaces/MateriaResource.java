@@ -25,37 +25,37 @@ public class MateriaResource {
     private MateriaService materiaService;
 
     @GET
-    @Path("/todas")
+    @Path("")
     public List<Materia> encontrarTodas() {
         return this.materiaService.listarTodas();
     }
 
     @GET
-    @Path("/consultarPorId/{id}")
+    @Path("/{id}")
     public Materia consultarPorId(@PathParam("id") Integer id) {
         return this.materiaService.consultarPorId(id);
     }
 
     @POST
-    @Path("/crear")
+    @Path("")
     public void guardar(Materia materia) {
         this.materiaService.crear(materia);
     }
 
     @PUT
-    @Path("/actualizar/{id}")
+    @Path("/{id}")
     public void actualizar(@PathParam("id") Integer id, Materia materia) {
         this.materiaService.actualizar(id, materia);
     }
 
     @PATCH
-    @Path("/actualizarParcial/{id}")
+    @Path("/{id}")
     public void actualizarParcial(@PathParam("id") Integer id, Materia materia) {
         this.materiaService.actualizarParcial(id, materia);
     }
 
     @DELETE
-    @Path("/borrar/{id}")
+    @Path("/{id}")
     public void borrar(@PathParam("id") Integer id) {
         this.materiaService.eliminar(id);
     }
