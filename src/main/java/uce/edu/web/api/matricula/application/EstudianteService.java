@@ -57,7 +57,7 @@ public class EstudianteService {
     }
 
     public List<Estudiante> buscarPorProvincia(String provincia) {
-         return this.estudianteRepository.find("provincia", provincia).list();
+         return this.estudianteRepository.find("provinciaaa", provincia).list();
        // return this.estudianteRepository.find("provincia = ?1 and genero = ?2", provincia, genero).list();
     }
 

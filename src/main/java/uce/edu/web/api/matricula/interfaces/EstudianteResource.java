@@ -14,6 +14,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.Response;
 import uce.edu.web.api.matricula.application.EstudianteService;
 import uce.edu.web.api.matricula.domain.Estudiante;
 
@@ -41,14 +42,16 @@ public class EstudianteResource {
 
     @POST
     @Path("")
-    public void guardar(Estudiante estudiante) {
+    public Response guardar(Estudiante estudiante) {
         this.estudianteService.crear(estudiante);
+        return Response.status(Response.Status.CREATED).entity(estudiante).build();
     }
 
     @PUT
     @Path("/{id}")
-    public void actualizar(@PathParam("id") Integer id, Estudiante estudiante) {
+    public Response actualizar(@PathParam("id") Integer id, Estudiante estudiante) {
         this.estudianteService.actualizar(id, estudiante);
+        return Response.status(209).entity(estudiante).build();
     }
 
     @PATCH
