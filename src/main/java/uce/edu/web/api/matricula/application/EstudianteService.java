@@ -30,23 +30,23 @@ public class EstudianteService {
     @Transactional
     public void actualizar(Integer id, Estudiante estudiante) {
         Estudiante estu = this.consultarPorId(id);
-        estu.apellido = estudiante.getApellido();
-        estu.nombre = estudiante.getNombre();
-        estu.fechaNacimiento = estudiante.getFechaNacimiento();
+        estu.setApellido(estudiante.getApellido());
+        estu.setNombre(estudiante.getNombre());
+        estu.setFechaNacimiento(estudiante.getFechaNacimiento());
         // dirty changes
     }
 
     @Transactional
     public void actualizarParcial(Integer id, Estudiante estudiante) {
         Estudiante estu = this.consultarPorId(id);
-        if (estudiante.nombre != null) {
-            estu.nombre = estudiante.getNombre();
+        if (estudiante.getNombre() != null) {
+            estu.setNombre(estudiante.getNombre());
         }
-        if (estudiante.apellido != null) {
-            estu.apellido = estudiante.getApellido();
+        if (estudiante.getApellido() != null) {
+            estu.setApellido(estudiante.getApellido());
         }
-        if (estudiante.fechaNacimiento != null) {
-            estu.fechaNacimiento = estudiante.getFechaNacimiento();
+        if (estudiante.getFechaNacimiento() != null) {
+            estu.setFechaNacimiento(estudiante.getFechaNacimiento());
         }
 
     }

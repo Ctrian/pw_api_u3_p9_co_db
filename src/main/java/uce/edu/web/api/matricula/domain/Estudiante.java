@@ -9,7 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @Entity
 @Table(name = "estudiante")
 @SequenceGenerator(name = "estudiante_seq", sequenceName = "estudiante_sequence", allocationSize = 1)
@@ -17,17 +19,17 @@ public class Estudiante extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estudiante_seq")
-    public Integer id;
+    private Integer id;
 
-    public String nombre;
+    private String nombre;
 
-    public String apellido;
+    private String apellido;
 
-    public LocalDateTime fechaNacimiento;
+    private LocalDateTime fechaNacimiento;
 
-    public String provincia;
+    private String provincia;
 
-    public String genero;
+    private String genero;
 
     // Getters and Setters
 

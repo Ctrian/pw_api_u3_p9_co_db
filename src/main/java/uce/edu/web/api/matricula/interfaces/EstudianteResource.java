@@ -14,13 +14,17 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import uce.edu.web.api.matricula.application.EstudianteService;
 import uce.edu.web.api.matricula.domain.Estudiante;
+
 
 @Path("/estudiantes")
 @Consumes("application/json")
 @Produces("application/json")
+@XmlRootElement
 public class EstudianteResource {
 
     @Inject
@@ -28,6 +32,8 @@ public class EstudianteResource {
 
     @GET
     @Path("")
+    // esta produciendo, por eso esta mostrando
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Estudiante> encontrarTodos() {
         System.err.println("MACUMBA MACUMBA MACUMBA");
         return this.estudianteService.listarTodos();
@@ -36,6 +42,7 @@ public class EstudianteResource {
 
     @GET
     @Path("/{id}")
+    @Produces(MediaType.APPLICATION_XML)
     public Estudiante conssultarPoId(@PathParam("id") Integer idTest) {
         return this.estudianteService.consultarPorId(idTest);
     }
@@ -75,6 +82,7 @@ public class EstudianteResource {
 
     @GET
     @Path("/provincia/genero")
+    @Produces(MediaType.APPLICATION_XML)
     public List<Estudiante> buscarPorProvinciaGenero(@QueryParam("provincia") String provincia,
             @QueryParam("genero") String genero) {
         System.out.println(":0000000000000000000000000000");
