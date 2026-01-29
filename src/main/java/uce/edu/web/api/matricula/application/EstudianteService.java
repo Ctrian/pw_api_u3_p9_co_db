@@ -38,7 +38,7 @@ public class EstudianteService {
     }
 
     @Transactional
-    public void actualizarParcial(Integer id, Estudiante estudiante) {
+    public void actualizarParcial(Integer id, EstudianteRepresentation estudiante) {
         Estudiante estu = this.mappearEstudiante(this.consultarPorId(id));
         if (estudiante.getNombre() != null) {
             estu.setNombre(estudiante.getNombre());
@@ -58,7 +58,7 @@ public class EstudianteService {
     }
 
     public List<Estudiante> buscarPorProvincia(String provincia) {
-        return this.estudianteRepository.find("provinciaaa", provincia).list();
+        return this.estudianteRepository.find("provincia", provincia).list();
         // return this.estudianteRepository.find("provincia = ?1 and genero = ?2",
         // provincia, genero).list();
     }

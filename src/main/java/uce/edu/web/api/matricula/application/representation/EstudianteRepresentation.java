@@ -3,9 +3,6 @@ package uce.edu.web.api.matricula.application.representation;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
 import uce.edu.web.api.matricula.domain.Hijo;
 
 public class EstudianteRepresentation {
@@ -21,6 +18,8 @@ public class EstudianteRepresentation {
     private String provincia;
 
     private String genero;
+
+    private List<LinkDTO> links;
 
     public Hijo mappearHijos() {
         Hijo hijo = new Hijo();
@@ -75,5 +74,12 @@ public class EstudianteRepresentation {
         this.genero = genero;
     }
 
-    
+    public List<LinkDTO> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<LinkDTO> links) {
+        this.links = links;
+    }
+
 }
