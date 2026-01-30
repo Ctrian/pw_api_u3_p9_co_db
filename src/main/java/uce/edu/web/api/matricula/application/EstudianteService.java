@@ -28,11 +28,20 @@ public class EstudianteService {
     }
 
     @Transactional
+<<<<<<< Updated upstream
     public void actualizar(Integer id, Estudiante estudiante) {
         Estudiante estu = this.consultarPorId(id);
         estu.apellido = estudiante.getApellido();
         estu.nombre = estudiante.getNombre();
         estu.fechaNacimiento = estudiante.getFechaNacimiento();
+=======
+    public void actualizar(Integer id, EstudianteRepresentation estudiante) {
+        Estudiante estu = this.mappearEstudiante(this.consultarPorId(id));
+        estu.setApellido(estudiante.getApellido());
+        estu.setNombre(estudiante.getNombre());
+        estu.setFechaNacimiento(estudiante.getFechaNacimiento());
+        this.estudianteRepository.getEntityManager().merge(estu);
+>>>>>>> Stashed changes
         // dirty changes
     }
 
@@ -48,7 +57,7 @@ public class EstudianteService {
         if (estudiante.fechaNacimiento != null) {
             estu.fechaNacimiento = estudiante.getFechaNacimiento();
         }
-
+        this.estudianteRepository.getEntityManager().merge(estu);
     }
 
     @Transactional
