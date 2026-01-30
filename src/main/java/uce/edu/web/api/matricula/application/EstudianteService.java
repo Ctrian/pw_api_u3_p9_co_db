@@ -33,6 +33,7 @@ public class EstudianteService {
         estu.apellido = estudiante.getApellido();
         estu.nombre = estudiante.getNombre();
         estu.fechaNacimiento = estudiante.getFechaNacimiento();
+        this.estudianteRepository.getEntityManager().merge(estu);
         // dirty changes
     }
 
