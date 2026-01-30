@@ -34,6 +34,7 @@ public class EstudianteService {
         estu.setApellido(estudiante.getApellido());
         estu.setNombre(estudiante.getNombre());
         estu.setFechaNacimiento(estudiante.getFechaNacimiento());
+        this.estudianteRepository.getEntityManager().merge(estu);
         // dirty changes
     }
 
@@ -49,7 +50,7 @@ public class EstudianteService {
         if (estudiante.getFechaNacimiento() != null) {
             estu.setFechaNacimiento(estudiante.getFechaNacimiento());
         }
-
+        this.estudianteRepository.getEntityManager().merge(estu);
     }
 
     @Transactional
