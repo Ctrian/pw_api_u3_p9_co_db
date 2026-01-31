@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -44,6 +46,7 @@ public class EstudianteResource {
 
     @GET
     @Path("")
+    @RolesAllowed("admin")
     // esta produciendo, por eso esta mostrando
     @Produces(MediaType.APPLICATION_JSON)
     public List<EstudianteRepresentation> encontrarTodos() {
@@ -54,6 +57,8 @@ public class EstudianteResource {
 
     @GET
     @Path("/{id}")
+    //@PermitAll
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     public EstudianteRepresentation consultarPoId(@PathParam("id") Integer idTest) {
         return this.construirLinks(this.estudianteService.consultarPorId(idTest));
@@ -61,6 +66,7 @@ public class EstudianteResource {
 
     @POST
     @Path("")
+    @RolesAllowed("admin")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response guardar(EstudianteRepresentation estudiante) {
@@ -70,6 +76,7 @@ public class EstudianteResource {
 
     @PUT
     @Path("/{id}")
+    @RolesAllowed("admin")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response actualizar(@PathParam("id") Integer id, EstudianteRepresentation estudiante) {
@@ -79,6 +86,7 @@ public class EstudianteResource {
 
     @PATCH
     @Path("/{id}")
+    @RolesAllowed("admin")
     @Consumes(MediaType.APPLICATION_JSON)
     public void actualizarParcial(@PathParam("id") Integer id, EstudianteRepresentation estudiante) {
         this.estudianteService.actualizarParcial(id, estudiante);
@@ -86,12 +94,14 @@ public class EstudianteResource {
 
     @DELETE
     @Path("/{id}")
+    @RolesAllowed("admin")
     public void borrar(@PathParam("id") Integer id) {
         this.estudianteService.eliminar(id);
     }
 
     @GET
     @Path("/provincia")
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Estudiante> buscarPorProvincia(@QueryParam("provincia") String provincia) {
         System.err.println("B========D");
@@ -100,6 +110,7 @@ public class EstudianteResource {
 
     @GET
     @Path("/provincia/genero")
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Estudiante> buscarPorProvinciaGenero(@QueryParam("provincia") String provincia,
             @QueryParam("genero") String genero) {
@@ -109,6 +120,7 @@ public class EstudianteResource {
 
     @GET
     @Path("/{id}/hijos")
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     public List<HijoRepresentation> buscarPorIdDelEstudiante(@PathParam("id") Integer id) {
         return this.hijoService.buscarPorIdDelEstudiante(id);

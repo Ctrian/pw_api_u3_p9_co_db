@@ -9,8 +9,8 @@ import uce.edu.web.api.matricula.application.representation.EstudianteRepresenta
 import uce.edu.web.api.matricula.domain.Estudiante;
 import uce.edu.web.api.matricula.infraestructure.EstudianteRepository;
 
-@ApplicationScoped
 @Transactional
+@ApplicationScoped
 public class EstudianteService {
 
     @Inject

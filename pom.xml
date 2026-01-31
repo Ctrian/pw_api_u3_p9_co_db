@@ -76,10 +76,18 @@
       <dependency>
     <groupId>io.quarkus</groupId>
     <artifactId>quarkus-resteasy-jaxb</artifactId>
-    </dependency>  
+    </dependency> 
+    <dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-smallrye-jwt</artifactId>
+    </dependency>
  
- 
-</dependencies>
+    <dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-security</artifactId>
+    </dependency>
+    
+    </dependencies>
  
  
     <build>
