@@ -47,17 +47,17 @@ public class EstudianteResource {
     @GET
     @Path("")
     @RolesAllowed("admin")
+    // @PermitAll
     // esta produciendo, por eso esta mostrando
     @Produces(MediaType.APPLICATION_JSON)
     public List<EstudianteRepresentation> encontrarTodos() {
         System.err.println("MACUMBA MACUMBA MACUMBA");
         return this.construirLinks(this.estudianteService.listarTodos());
-
     }
 
     @GET
     @Path("/{id}")
-    //@PermitAll
+    // @PermitAll
     @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     public EstudianteRepresentation consultarPoId(@PathParam("id") Integer idTest) {
@@ -135,31 +135,32 @@ public class EstudianteResource {
 
     private EstudianteRepresentation construirLinks(EstudianteRepresentation er) {
         String self = this.info.getBaseUriBuilder().path(EstudianteResource.class).path(String.valueOf(er.getId()))
-            .build().toString();
+                .build().toString();
 
-        String hijos = this.info.getBaseUriBuilder().path(EstudianteResource.class).path(String.valueOf(er.getId())).path("hijos").build().toString();
+        String hijos = this.info.getBaseUriBuilder().path(EstudianteResource.class).path(String.valueOf(er.getId()))
+                .path("hijos").build().toString();
 
         er.setLinks(List.of(new LinkDTO(self, "self"), new LinkDTO(hijos, "hijos")));
         return er;
     }
 
     private List<EstudianteRepresentation> construirLinks(List<EstudianteRepresentation> estudiantes) {
-    for (EstudianteRepresentation er : estudiantes) {
-        String self = this.info.getBaseUriBuilder()
-            .path(EstudianteResource.class)
-            .path(String.valueOf(er.getId()))
-            .build()
-            .toString();
+        for (EstudianteRepresentation er : estudiantes) {
+            String self = this.info.getBaseUriBuilder()
+                    .path(EstudianteResource.class)
+                    .path(String.valueOf(er.getId()))
+                    .build()
+                    .toString();
 
-        String hijos = this.info.getBaseUriBuilder()
-            .path(EstudianteResource.class)
-            .path(String.valueOf(er.getId()))
-            .path("hijos")
-            .build()
-            .toString();
+            String hijos = this.info.getBaseUriBuilder()
+                    .path(EstudianteResource.class)
+                    .path(String.valueOf(er.getId()))
+                    .path("hijos")
+                    .build()
+                    .toString();
 
-        er.setLinks(List.of(new LinkDTO(self, "self"), new LinkDTO(hijos, "hijos")));
+            er.setLinks(List.of(new LinkDTO(self, "self"), new LinkDTO(hijos, "hijos")));
+        }
+        return estudiantes;
     }
-    return estudiantes;
-}
 }
