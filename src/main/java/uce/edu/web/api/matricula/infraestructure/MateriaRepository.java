@@ -1,7 +1,5 @@
 package uce.edu.web.api.matricula.infraestructure;
 
-import javax.management.Query;
-
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
